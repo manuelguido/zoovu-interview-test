@@ -65,7 +65,7 @@ export default {
 /* Image card */
 .slot-card {
   background-color: #f5f6f9;
-  border: #2dd09c 1px dashed;
+  border: #2dd09c 2px dashed;
   border-radius: 8px;
   box-shadow: none;
   width: 16%;
