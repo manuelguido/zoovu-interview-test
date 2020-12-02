@@ -4,19 +4,14 @@
     <sub-title :text="title" classList="mb-5"></sub-title>
     <!-- Cards container -->
     <div class="d-flex justify-content-between mb-5">
-      <!-- Cards -->
-      <div
+      <!-- Slots -->
+      <slot-card
         v-for="slot in slots"
         :key="slot.id"
-        class="card slot-card"
-        @drop="onDrop($event, slot.id)"
-        @dragover.prevent
-        @dragenter.prevent
-      >
-        <!-- Image -->
-        <card-image v-if="slot.id == slot.card.slot" :image="slot.card.image"></card-image>
-      </div>
-      <!-- /.Cards -->
+        :slotData="slot"
+        @placeCard="placeCard"
+      />
+      <!-- /.Slots -->
     </div>
     <!-- /.Cards container -->
   </div>
@@ -24,12 +19,12 @@
 </template>
 
 <script>
-import CardImage from "./CardImage.vue";
+import SlotCard from "./cards/SlotCard";
 import SubTitle from "../titles/SubTitle.vue";
 export default {
-  name: "PickupCards",
+  name: "DroppableArea",
   components: {
-    CardImage,
+    SlotCard,
     SubTitle,
   },
   props: {
@@ -66,28 +61,9 @@ export default {
     /**
      * On card drop
      */
-    onDrop (evt, slotId) {
-      const cardId = evt.dataTransfer.getData('cardId');
-      // var currentCard = this.cards.find(card => card.id == cardId);
-      this.$emit('placeCard', { 'cardId': cardId, 'slotId': slotId });
-    }
+    placeCard(data){
+      this.$emit('placeCard', data);
+    },
   },
 };
 </script>
-
-<style scoped>
-/* Image card */
-.slot-card {
-  background-color: #f5f6f9;
-  border: #2dd09c 1px dashed;
-  border-radius: 8px;
-  box-shadow: none;
-  width: 16%;
-  cursor: move;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 !important;
-  overflow: hidden;
-}
-</style>
