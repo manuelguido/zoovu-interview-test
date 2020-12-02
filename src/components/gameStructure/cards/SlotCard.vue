@@ -2,24 +2,30 @@
   <div
     ref="card"
     class="card slot-card"
-    @drop="onDrop($event, slotData.id)"
+    @drop="onDrop($event, slotData)"
     @dragover.prevent
     @dragenter.prevent
   >
-    <!-- Image -->
+    <draggable-card
+      v-if="slotData.card && slotData.id == slotData.card.slot"
+      :card="slotData.card"
+      fullSize
+    />
+    <!-- Image
     <card-image
-      v-if="slotData.id == slotData.card.slot"
+      v-if="slotData.card && slotData.id == slotData.card.slot"
       :image="slotData.card.image"
-    ></card-image>
+    ></card-image> -->
   </div>
 </template>
 
 <script>
-import CardImage from "./CardImage";
+// import DraggableCard from "./DraggableCard";
+import DraggableCard from "./DraggableCard.vue";
 export default {
   name: "SlotCard",
   components: {
-    CardImage,
+    DraggableCard,
   },
   props: {
     slotData: {
@@ -27,25 +33,30 @@ export default {
     },
   },
   created() {
-    window.addEventListener("resize", this.caclCardHeight);
+    window.addEventListener("resize", this.calcCardHeight);
   },
   mounted() {
-    this.caclCardHeight();
+    this.calcCardHeight();
   },
   destroyed() {
-    window.removeEventListener("resize", this.caclCardHeight);
+    window.removeEventListener("resize", this.calcCardHeight);
   },
   methods: {
-    caclCardHeight() {
+    /**
+     * Calculate slot card height.
+     */
+    calcCardHeight() {
       var wd = this.$refs.card.clientWidth;
       this.$refs.card.style.height = wd + "px";
     },
 
-    onDrop (evt, slotId) {
-      const cardId = evt.dataTransfer.getData('cardId');
-      // var currentCard = this.cards.find(card => card.id == cardId);
-      this.$emit('placeCard', { 'cardId': cardId, 'slotId': slotId });
-    }
+    onDrop(evt, slot) {
+      const cardId = evt.dataTransfer.getData("cardId");
+      if (!slot.card) {
+        // var currentCard = this.cards.find(card => card.id == cardId);
+        this.$emit("placeCard", { cardId: cardId, slotId: slot.id });
+      }
+    },
   },
 };
 </script>
@@ -63,6 +74,5 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0 !important;
-  overflow: hidden;
 }
 </style>

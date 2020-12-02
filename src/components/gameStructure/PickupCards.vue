@@ -2,7 +2,13 @@
   <!-- Outer container -->
   <div class="outer-cointainer">
     <!-- Cards container -->
-    <div class="d-flex justify-content-between mb-5 drop-zone">
+    <div
+      ref="row"
+      :class="['d-flex mb-5 drop-zone', className]"
+      @drop="onDrop($event)"
+      @dragover.prevent
+      @dragenter.prevent
+    >
       <!-- Cards -->
       <draggable-card
         v-for="card in cards"
@@ -29,23 +35,34 @@ export default {
       type: Array,
     },
   },
+  computed: {
+    className() {
+      return this.cards.length == 5
+        ? "justify-content-between"
+        : "justify-content-around";
+    },
+  },
   data() {
     return {
       gameStarted: false,
     };
   },
   created() {
-    this.randomize();
+    window.addEventListener("resize", this.calcRowHeight);
+  },
+  mounted() {
+    this.calcRowHeight();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.calcRowHeight);
   },
   methods: {
-    randomize() {
-      for (var i = this.cards.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = this.cards[i];
-        this.cards[i] = this.cards[j];
-        this.cards[j] = temp;
-      }
-      this.loadingCards = false;
+    /**
+     * Make the row equal height when is not filled with cards.
+     */
+    calcRowHeight() {
+      var wd = this.$refs.row.clientHeight;
+      this.$refs.row.style.height = wd + "px";
     },
 
     /**
@@ -53,10 +70,17 @@ export default {
      */
     emitStart() {
       if (!this.gameStarted) {
-        console.log("emito");
         this.gameStarted = true;
         this.$emit("startGame", true);
       }
+    },
+
+    /**
+     * Place card again into the pickup options.
+     */
+    onDrop(evt) {
+      const cardId = evt.dataTransfer.getData("cardId");
+      this.$emit("placeCardOnPickup", cardId);
     },
   },
 };

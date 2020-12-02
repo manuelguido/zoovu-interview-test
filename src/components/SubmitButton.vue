@@ -1,6 +1,10 @@
 <template>
   <span>
-    <button :class="['submit-button', disabled ? 'disabled': '']" @click="submit" type="submit">
+    <button
+      :class="['submit-button', disabled ? 'disabled' : '']"
+      @click="submit"
+      type="submit"
+    >
       Let's go
       <i class="fas fa-arrow-right ml-3"></i>
     </button>
@@ -9,26 +13,26 @@
 
 <script>
 export default {
-  name: 'SubmitButton',
+  name: "SubmitButton",
   props: {
     disabled: {
       type: Boolean,
       default: false,
-    }
+    },
   },
-  data () {
+  data() {
     return {
-      placeholder: 'Your name here',
-    }
+      placeholder: "Your name here",
+    };
   },
   methods: {
     submit() {
       if (!this.disabled) {
-        this.$emit('submitData', true);
+        this.$emit("submitData", true);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -39,8 +43,8 @@ export default {
   justify-content: center;
   border: 1px solid #dbdce4;
   border-radius: 50px;
-  transition: .2s all;
-  padding: .75em 2em;
+  transition: 0.2s all;
+  padding: 0.75em 2em;
 }
 
 /* Button is not disabled */
@@ -52,7 +56,7 @@ export default {
 /* Button is disabled */
 .submit-button.disabled {
   cursor: not-allowed !important;
-  opacity: .4 !important;
+  opacity: 0.4 !important;
 }
 
 /* Button hover */
@@ -70,6 +74,6 @@ export default {
 
 /* When button is clicked */
 .submit-button:not(.disabled):active {
-  background-color: rgba(35, 6, 94, .7); 
+  background-color: rgba(35, 6, 94, 0.7);
 }
 </style>

@@ -6,20 +6,20 @@
       v-on:input="$emit('input', $event.target.value)"
       type="text"
       :placeholder="placeholder"
-      />
+    />
   </span>
 </template>
 
 <script>
 export default {
-  name: 'NameInput',
-  props: ['value'],
-  data () {
+  name: "NameInput",
+  props: ["value"],
+  data() {
     return {
-      placeholder: 'Your name here',
-    }
-  }
-}
+      placeholder: "Your name here",
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -35,7 +35,7 @@ export default {
   outline: none;
   text-align: center;
   width: 400px;
-} 
+}
 .name-input::placeholder {
   color: #bbb;
   font-style: italic;

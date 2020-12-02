@@ -5,7 +5,7 @@
     @click="emitStart"
     @drag="emitStart"
     @dragstart="startDrag($event, card)"
-    class="card draggable-card"
+    :class="['card draggable-card', fullSize ? 'full-size' : 'medium-size']"
   >
     <!-- Image -->
     <card-image :image="card.image"></card-image>
@@ -23,20 +23,29 @@ export default {
     card: {
       type: Object,
     },
+    fullSize: {
+      type: Boolean,
+      default: false,
+    },
   },
   created() {
-    window.addEventListener("resize", this.caclCardHeight);
+    window.addEventListener("resize", this.calcCardHeight);
   },
   mounted() {
-    this.caclCardHeight();
+    this.calcCardHeight();
   },
   destroyed() {
-    window.removeEventListener("resize", this.caclCardHeight);
+    window.removeEventListener("resize", this.calcCardHeight);
   },
   methods: {
-    caclCardHeight() {
-      var wd = this.$refs.card.clientWidth;
-      this.$refs.card.style.height = wd + "px";
+    /**
+     * Calculate card height.
+     */
+    calcCardHeight() {
+      if (!this.fullSize) {
+        var wd = this.$refs.card.clientWidth;
+        this.$refs.card.style.height = wd + "px";
+      }
     },
 
     /**
@@ -64,7 +73,15 @@ export default {
   border: 0 none;
   border-radius: 8px;
   box-shadow: 0 0 1em #dfe0e0;
-  width: 16%;
   cursor: move;
+}
+
+.full-size {
+  width: 100%;
+  height: 100%;
+}
+
+.medium-size {
+  width: 16%;
 }
 </style>

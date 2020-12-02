@@ -33,36 +33,19 @@ export default {
     },
     slots: {
       type: Array,
-    }
+    },
   },
   data() {
     return {
       title: "..and drop them here to make the logo great again!",
     };
   },
-  created() {
-    window.addEventListener("resize", this.caclCardHeight);
-  },
-  mounted() {
-    this.caclCardHeight();
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.caclCardHeight);
-  },
   methods: {
-    caclCardHeight() {
-      var cards = document.querySelectorAll(".slot-card");
-      var wd = cards[0].clientWidth;
-      cards.forEach((card) => {
-        card.style.height = wd + "px";
-      });
-    },
-
     /**
      * On card drop
      */
-    placeCard(data){
-      this.$emit('placeCard', data);
+    placeCard(data) {
+      this.$emit("placeCard", data);
     },
   },
 };
