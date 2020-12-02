@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from './views/Home.vue'
-import GamePlay from './views/GamePlay.vue'
-import Error404 from './views/Error404.vue'
+import Game from './views/Game.vue'
 
 Vue.use(Router)
 
@@ -16,10 +15,10 @@ export default new Router({
       component: Home
     },
     {
-      path: '/game_play',
-      name: 'GamePlay',
-      component: GamePlay,
-      beforeEnter (to, from, next) {
+      path: '/game',
+      name: 'Game',
+      component: Game,
+      beforeEnter(to, from, next) {
         if (localStorage.username) {
           next()
         } else {
@@ -30,7 +29,7 @@ export default new Router({
     {
       path: '*',
       name: '404',
-      component: Error404
+      redirect: '/',
     }
   ]
 })

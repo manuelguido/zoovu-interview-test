@@ -1,6 +1,6 @@
 <template>
   <span>
-    <button :class="['submit-button', disabled ? 'disabled': '']" @click="submit">
+    <button :class="['submit-button', disabled ? 'disabled': '']" @click="submit" type="submit">
       Let's go
       <i class="fas fa-arrow-right ml-3"></i>
     </button>

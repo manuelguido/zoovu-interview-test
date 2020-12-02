@@ -1,40 +1,47 @@
 <template>
-  <div class="height-100 d-flex flex-column align-items-center justify-content-center">
+  <!-- Container -->
+  <div
+    class="height-100 d-flex flex-column align-items-center justify-content-center"
+  >
+    <!-- Title -->
     <h1 class="h2 uns mb-5">Hello friend, tell me your name...</h1>
-    <name-input v-model="username"></name-input>
-    <submit-button @submitData="submit" :disabled="submitDisabled"></submit-button>
+    <!-- Name input -->
+    <name-input v-model="username" />
+    <!-- Submit button -->
+    <submit-button @submitData="submit" :disabled="submitDisabled" />
   </div>
+  <!-- /.Container -->
 </template>
 
 <script>
-import NameInput from '../components/NameInput.vue'
-import SubmitButton from '../components/SubmitButton.vue'
+import NameInput from "../components/NameInput.vue";
+import SubmitButton from "../components/SubmitButton.vue";
 export default {
-  name: 'HomePage',
+  name: "HomePage",
   components: {
     NameInput,
     SubmitButton,
   },
-  data () {
+  data() {
     return {
-      username: '',
+      username: "",
       submitDisabled: true,
-    }
+    };
   },
-  created () {
+  created() {
     localStorage.clear();
   },
   methods: {
     submit() {
-      localStorage.setItem('username', JSON.stringify(this.username));
-      this.$router.push({ name: 'GamePlay' });
-    }
+      localStorage.setItem("username", JSON.stringify(this.username));
+      this.$router.push({ name: "Game" });
+    },
   },
   watch: {
     // If username is empty then submit name is forbidden
-    username: function() {
-      this.submitDisabled = (this.username == '');
-    }
-  }
-}
+    username: function () {
+      this.submitDisabled = this.username == "";
+    },
+  },
+};
 </script>
