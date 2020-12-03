@@ -2,25 +2,20 @@
 
 ## Download project
 ```
-git clone zoovu-make-our-logo-great-again-vue
+git clone https://github.com/manuelguido/zoovu-make-our-logo-great-again-vue.git
 ```
 
-# 1) To test the game without running the project, open the the following file
+### To test the game without running the project: open the the following file
 ```
 i-want-to-play-a-game.html inside the folder "zoovu-make-our-logo-great-again-vue/demo"
 ```
 
-<hr>
-
-# 2) To test the project 
-
-
-## Place into project directory
+### To test the project: Place into project directory
 ```
 cd zoovu-make-our-logo-great-again-vue
 ```
 
-## Project initial setup
+### Project initial setup
 ```
 npm install
 ```
