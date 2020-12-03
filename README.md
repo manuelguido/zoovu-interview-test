@@ -41,6 +41,8 @@ npm run test:unit
 npm run lint
 ```
 
+## Application images
+
 <p align="center">
   <img width="100%" src="/gitimages/wallpaper1.png">
 </p>
