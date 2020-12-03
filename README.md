@@ -7,7 +7,7 @@ git clone https://github.com/manuelguido/zoovu-make-our-logo-great-again-vue.git
 
 ### To test the game without running the project: open the the following file
 ```
-i-want-to-play-a-game.html inside the folder "zoovu-make-our-logo-great-again-vue/demo"
+"zoovu-make-our-logo-great-again-vue/demo/i-want-to-play-a-game.html"
 ```
 
 ### To test the project: Place into project directory
