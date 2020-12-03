@@ -1,9 +1,19 @@
-# ZOOVU
+# Zoovu
 
 ## Download project
 ```
 git clone zoovu-make-our-logo-great-again-vue
 ```
+
+# 1) To test the game without running the project, open the the following file
+```
+i-want-to-play-a-game.html inside the folder "zoovu-make-our-logo-great-again-vue/demo"
+```
+
+<hr>
+
+# 2) To test the project 
+
 
 ## Place into project directory
 ```
