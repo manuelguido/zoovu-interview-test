@@ -11,7 +11,7 @@ inside the folder: "zoovu-make-our-logo-great-again-vue/demo/"
 file: "i-want-to-play-a-game.html"
 ```
 
-### To test the project place into project directory with cmd
+### To test the project place into project directory
 ```
 cd zoovu-make-our-logo-great-again-vue
 ```
