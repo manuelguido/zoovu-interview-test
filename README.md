@@ -36,8 +36,6 @@ npm run test:unit
 npm run lint
 ```
 
-<h1 align="center">Luci's Foodhouse</h1>
-
 <p align="center">
   <img width="100%" src="/gitimages/wallpaper1.png">
 </p>
