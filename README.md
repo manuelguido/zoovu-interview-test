@@ -5,12 +5,13 @@
 git clone https://github.com/manuelguido/zoovu-make-our-logo-great-again-vue.git
 ```
 
-### To test the game without running the project: open the the following file
+### To test the game without running the project open:
 ```
-"zoovu-make-our-logo-great-again-vue/demo/i-want-to-play-a-game.html"
+inside the folder: "zoovu-make-our-logo-great-again-vue/demo/"
+file: "i-want-to-play-a-game.html"
 ```
 
-### To test the project: Place into project directory
+### To test the project place into project directory with cmd
 ```
 cd zoovu-make-our-logo-great-again-vue
 ```
@@ -26,19 +27,9 @@ npm run serve
 ```
 Usually runs on: http://localhost:8080/
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
 ### Run unit tests
 ```
 npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ## Application images
