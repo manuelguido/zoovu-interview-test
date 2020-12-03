@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      username: "",
+      username: '',
       submitDisabled: true,
     };
   },
@@ -40,7 +40,7 @@ export default {
   watch: {
     // If username is empty then submit name is forbidden
     username: function () {
-      this.submitDisabled = this.username == "";
+      this.submitDisabled = (this.username == '');
     },
   },
 };

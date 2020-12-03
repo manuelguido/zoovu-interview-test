@@ -130,7 +130,10 @@ export default {
     };
   },
   created() {
-    this.initializeData();
+    // Initialize game data.
+    this.initializeGameData();
+
+    // Clear local storage when user reloads page.
     window.addEventListener("beforeunload", function () {
       localStorage.clear();
     });
@@ -138,9 +141,6 @@ export default {
   computed: {
     placedList() {
       return this.cards.filter((card) => card.slot === 0);
-    },
-    unplacedList() {
-      return this.cards.filter((card) => card.slot != 0);
     },
   },
   methods: {
@@ -150,9 +150,9 @@ export default {
       });
     },
     /**
-     * Randomize cards.
+     * Initialize data for game start.
      */
-    initializeData() {
+    initializeGameData() {
       this.loadingData = true;
 
       this.timePassed = 0;
@@ -270,7 +270,7 @@ export default {
     reloadTime: function () {
       if (this.reloadTime == 0) {
         this.userWon = false;
-        this.initializeData();
+        this.initializeGameData();
       }
     },
   },
