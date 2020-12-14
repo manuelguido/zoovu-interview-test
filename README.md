@@ -45,7 +45,3 @@ npm run test:unit
 <p align="center">
   <img width="100%" src="/gitimages/wallpaper3.png">
 </p>
-
-# Contact
-  - Manuel Guido
- - manuelguido.m@gmail.com
